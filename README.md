@@ -1,3 +1,6 @@
+This project is for to try out nextJS in building Pantry tracker to fulfill my headstarter fellowship week 2 project.
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
