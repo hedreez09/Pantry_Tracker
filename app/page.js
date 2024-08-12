@@ -132,15 +132,17 @@ const handleFilter = async () => {
       flexDirection="column"
       justifyContent="center" 
       alignItems="center" 
-      gap={2}>
+      gap={2}
+      p={2}
+      >
       
       <Modal open={open} onClose={handleClose}>
         <Box position="absolute" 
         top="50%" 
         left="50%"
-        width={400} 
+        width={{ xs: '90%', sm: 400 }} 
         bgcolor="white"
-        border="2px solid #000" 
+        border="2em solid #000" 
         boxShadow={24} 
         p={4}
         display="flex"
@@ -152,7 +154,7 @@ const handleFilter = async () => {
         <Typography variant="h6">
           Add Item
           </Typography>
-        <Stack width="100" direction="row" spacing={2}>
+        <Stack width="100%" direction="row" spacing={2}>
           <TextField
         variant="outlined"
         fullWidth value={itemName}
@@ -176,22 +178,22 @@ const handleFilter = async () => {
         Add New Item
       </Button>
       
-      <Box border="1px solid #333">
-      <Box width="800px" height="100px" color="#ADD8E6" alignItems="center" justifyContent="center" display="flex"> 
-        <Typography variant="h2" color="#333">Pantry Tracker</Typography>
+      <Box border="1px solid #333" display="flex" flexDirection="column" alignItems="center" width="100%" maxWidth="1200px">
+      <Box width="100%" height="30%" color="#ADD8E6" display="flex" alignItems="center" justifyContent="center" p={0.1}> 
+        <Typography variant="h2" color="#333" textAlign="center">Pantry Tracker</Typography>
       </Box>
-      <Box display= "flex">
-        <Box display="flex" alignItems="center" mb={2}>
+      <Box width="30%" p={1}>
+        <Box display="flex" flexDirection={{xs: 'column', md: 'row'}} alignItems="center" mb={1}>
           <TextField
             label="Search Items"
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={(e) => setSearchQuery(e.target.value)} fullWidth sx={{md: {xs: 2, md:0},mr: {md: 2} }}
           />
           <IconButton onClick={handleSearch}>
             <SearchIcon />
           </IconButton>
         </Box>
-        <Box display="flex" alignItems="center" mb={2}>
+        <Box display="flex" flexDirection={{ xs: 'column', md: 'row' }} alignItems="center" mb={1}>
           <FormControl variant="outlined" sx={{ m: 1, minWidth: 120 }}>
             <InputLabel id="filter-field-label">Filter Field</InputLabel>
             <Select
@@ -255,26 +257,27 @@ const handleFilter = async () => {
           display="flex"
           alignItems="center"
           justifyContent="space-between"
-          bgcolor="#f0f0f0"
-          padding={5}>
+          padding={2}
+          flexDirection={{ xs: 'column', md: 'row' }}
+              textAlign="center">
             <Typography  
             variant="h3" 
             color="#333" 
-            textAlign="center">{name.charAt(0).toUpperCase() + name.slice(1)}
+            mb={1}>{name.charAt(0).toUpperCase() + name.slice(1)}
             </Typography>
             <Typography  
             variant="h3" 
             color="#333" 
-            textAlign="center">{quantity}
+            mb={1}>{quantity}
             </Typography>
-            <Box direction ="row" justifyContent="space-between" >
-            <Button variant="contained" onClick={()=>{
+            <Stack direction ="row" spacing={1} >
+              <Button variant="contained" onClick={()=>{
                 addItem(name)
               }}>Add</Button>
               <Button variant="contained" onClick={()=>{
                 removedItem(name)
               }}>Remove</Button>
-              </Box>
+              </Stack>
           </Box>)
         }
       </Stack>
